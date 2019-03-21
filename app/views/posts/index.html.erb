@@ -1,0 +1,43 @@
+
+<label for="busqueda">Buscar</label>
+<input name="busqueda" type="text" id="busqueda">
+
+<h1>Posts</h1>
+
+<%= render 'shared/form', post: @post %>
+
+<table>
+    <thead>
+        <tr>
+            <th><strong>Título</strong></th>
+            <th><strong>Contenido</strong></th>
+        </tr>        
+    </thead>
+    <tbody>
+        <%= render @posts %>     
+    </tbody>
+</table>
+<%= render 'edit_modal' %>  
+
+<script>
+    $('#busqueda').keyup(function(){
+        if ($('#busqueda').val().length >=3){
+            $.ajax({
+                type: 'GET',
+                url: '<%= busqueda_path %>',
+                data: {'input': $('#busqueda').val()}
+            })          
+        }else{
+            $('tbody').html('<%= j render @posts %>')
+        }
+    });
+</script>
+
+
+    
+
+
+
+
+
+

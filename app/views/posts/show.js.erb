@@ -1,0 +1,7 @@
+$('#exampleModalLabel').html(" <%=@post.title%>" );
+$('.modal-body').html(" <p><%=@post.content%></p><div> <%= j render 'shared/form_comment', post: @post, comment: @comment %></div>");
+$('.modal-footer').html("")
+<% @comments.each do |c| %>
+$('.modal-footer').append("<p><%= c.content %></p>")
+<% end %>
+$('#exampleModal').modal('show')
